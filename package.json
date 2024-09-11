@@ -68,7 +68,7 @@
     "js-xxhash": "^1.0.4",
     "jsonc-parser": "^3.0.0",
     "linkifyjs": "^3.0.5",
-    "micromatch": "^4.0.5",
+    "micromatch": "^4.0.8",
     "path-browserify": "^1.0.1",
     "preact": "^10.6.6",
     "reflect-metadata": "^0.1.13",
