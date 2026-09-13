@@ -2,11 +2,11 @@
   <img alt="vscode-js-debug" src="resources/readme/logo-with-text.png" width="500">
 </h1>
 
-This is a [DAP](https://microsoft.github.io/debug-adapter-protocol/)-based JavaScript debugger. It debugs Node.js, Chrome, Edge, WebView2, VS Code extensions, Blazor, React Native, and more. It is the default JavaScript debugger in Visual Studio Code and Visual Studio, and the standalone debug server can also be used in other tools such as [Neovim](https://github.com/mfussenegger/nvim-dap).
+This is a [DAP](https://microsoft.github.io/debug-adapter-protocol/)-based JavaScript debugger. It debugs Node.js, Chrome, Edge, WebView2, VS Code extensions, Blazor, React Native, and more. It is the default JavaScript debugger in Visual Studio Code and Visual Studio, and the standalone debug server can also be used in other tools.
 
 ## Usage
 
-If you're using Visual Studio or Visual Studio Code, `js-debug` is already installed. Otherwise, please consult your editor's documentation for possible installation instructions. Builds of the VS Code extension and standalone DAP server are available on the [releases](https://github.com/microsoft/vscode-js-debug/releases) page.
+If you're using Visual Studio or Visual Studio Code, `js-debug` is already installed. Otherwise, please consult your editor's documentation for possible installation instructions. Builds of the VS Code extension and standalone DAP server are available on the [releases](https://github.com/Unity-Billal-mesloub/vscode-js-debug/releases) page.
 
 See [OPTIONS.md](./OPTIONS.md) for a list of options you can use in your launch configurations.
 
