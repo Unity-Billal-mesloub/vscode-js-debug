@@ -2,6 +2,30 @@
 
 This changelog records changes to stable releases since 1.50.2. "TBA" changes here may be available in the [nightly release](https://github.com/microsoft/vscode-js-debug/#nightly-extension) before they're in stable. Note that the minor version (`v1.X.0`) corresponds to the VS Code version js-debug is shipped in, but the patch version (`v1.50.X`) is not meaningful.
 
+## Unreleased
+
+Nothing, yet
+
+## 1.117 (April 2026)
+
+- feat: add debug configuration provider for integrated browser ([#2347](https://github.com/microsoft/vscode-js-debug/pull/2347))
+- fix: capture early breakpoints when launching integrated browser ([#2347](https://github.com/microsoft/vscode-js-debug/pull/2347))
+- fix: prevent duplicate worker attachments in integrated browser ([#2347](https://github.com/microsoft/vscode-js-debug/pull/2347))
+
+## 1.112 (March 2026)
+
+- feat: support debugging integrated browser ([#2329](https://github.com/microsoft/vscode-js-debug/pull/2329))
+- fix: filter empty string args to prevent node from hanging ([#2328](https://github.com/microsoft/vscode-js-debug/issues/2328))
+- fix: debug session not terminating when browser closed from elevated VS ([#2327](https://github.com/microsoft/vscode-js-debug/issues/2327))
+
+## 1.110 (February 2026)
+
+- feat: add `Symbol.for("debug.properties")` for custom property replacement in debugger ([vscode#102181](https://github.com/microsoft/vscode/issues/102181))
+- feat: add focus emulation support ([#2316](https://github.com/microsoft/vscode-js-debug/pull/2316))
+- fix: label module scopes as expensive ([#2312](https://github.com/microsoft/vscode-js-debug/issues/2312))
+- fix: don't duplicate --allow-all for deno debug configuration ([#2308](https://github.com/microsoft/vscode-js-debug/issues/2308))
+- fix: dereferences of undefined at various places ([#2297](https://github.com/microsoft/vscode-js-debug/issues/2297))
+
 ## 1.105 (September 2025)
 
 - fix: slow sourcemap parsing for minified code ([#2265](https://github.com/microsoft/vscode-js-debug/issues/2265))

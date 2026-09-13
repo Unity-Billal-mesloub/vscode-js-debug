@@ -2,19 +2,21 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  *--------------------------------------------------------*/
 
-import { inject, injectable, multiInject } from 'inversify';
+import { inject, injectable, multiInject, optional } from 'inversify';
 import { extname, resolve } from 'path';
+import type * as vscodeType from 'vscode';
 import { IBreakpointsPredictor } from '../../adapter/breakpointPredictor';
 import { IPortLeaseTracker } from '../../adapter/portLeaseTracker';
 import Cdp from '../../cdp/api';
 import { asArray, iteratorFirst } from '../../common/arrayUtils';
-import { DebugType } from '../../common/contributionUtils';
+import { Configuration, DebugType, readConfig } from '../../common/contributionUtils';
 import { IFsUtils, LocalFsUtils } from '../../common/fsUtils';
 import { ILogger, LogTag } from '../../common/logging';
 import { fixDriveLetterAndSlashes } from '../../common/pathUtils';
 import { delay } from '../../common/promiseUtil';
 import { absolutePathToFileUrl, urlToRegex } from '../../common/urlUtils';
 import { AnyLaunchConfiguration, INodeLaunchConfiguration } from '../../configuration';
+import { VSCodeApi } from '../../ioc-extras';
 import { fixInspectFlags } from '../../ui/configurationUtils';
 import { retryGetNodeEndpoint } from '../browser/spawn/endpoints';
 import { ISourcePathResolverFactory } from '../sourcePathResolverFactory';
@@ -76,6 +78,7 @@ export class NodeLauncher extends NodeLauncherBase<INodeLaunchConfiguration> {
     @inject(IPackageJsonProvider) private readonly packageJson: IPackageJsonProvider,
     @inject(ISourcePathResolverFactory) pathResolverFactory: ISourcePathResolverFactory,
     @inject(IPortLeaseTracker) portLeaseTracker: IPortLeaseTracker,
+    @optional() @inject(VSCodeApi) private readonly vscode?: typeof vscodeType,
   ) {
     super(pathProvider, logger, portLeaseTracker, pathResolverFactory);
   }
@@ -309,6 +312,13 @@ export class NodeLauncher extends NodeLauncherBase<INodeLaunchConfiguration> {
 
     const ext = extname(targetProgram);
     if (!ext || ext === '.js') {
+      return targetProgram;
+    }
+
+    const resolve = this.vscode
+      ? readConfig(this.vscode.workspace, Configuration.ResolveDebugEntrypoint)
+      : true;
+    if (!resolve) {
       return targetProgram;
     }
 

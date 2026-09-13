@@ -82,6 +82,7 @@ export const enum DebugType {
   Node = 'pwa-node',
   Chrome = 'pwa-chrome',
   Edge = 'pwa-msedge',
+  EditorBrowser = 'pwa-editor-browser',
 }
 
 export const preferredDebugTypes: ReadonlyMap<DebugType, string> = new Map([
@@ -89,6 +90,7 @@ export const preferredDebugTypes: ReadonlyMap<DebugType, string> = new Map([
   [DebugType.Chrome, 'chrome'],
   [DebugType.ExtensionHost, 'extensionHost'],
   [DebugType.Edge, 'msedge'],
+  [DebugType.EditorBrowser, 'editor-browser'],
 ]);
 
 export const getPreferredOrDebugType = <T extends DebugType>(t: T) =>
@@ -101,6 +103,7 @@ const debugTypes: { [K in DebugType]: null } = {
   [DebugType.Node]: null,
   [DebugType.Chrome]: null,
   [DebugType.Edge]: null,
+  [DebugType.EditorBrowser]: null,
 };
 
 const commandsObj: { [K in Commands]: null } = {
@@ -178,6 +181,7 @@ export const enum Configuration {
   DefaultRuntimeExecutables = 'debug.javascript.defaultRuntimeExecutable',
   ResourceRequestOptions = 'debug.javascript.resourceRequestOptions',
   EnableNetworkView = 'debug.javascript.enableNetworkView',
+  ResolveDebugEntrypoint = 'debug.javascript.resolveDebugEntrypoint',
 }
 
 export type DebugByLinkState = 'on' | 'off' | 'always';
@@ -200,6 +204,7 @@ export interface IConfigurationTypes {
   [Configuration.DefaultRuntimeExecutables]: { [K in DebugType]?: string };
   [Configuration.ResourceRequestOptions]: Partial<OptionsOfBufferResponseBody>;
   [Configuration.EnableNetworkView]: boolean;
+  [Configuration.ResolveDebugEntrypoint]: boolean;
 }
 
 export interface IStackFrameContext {
